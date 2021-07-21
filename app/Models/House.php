@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\LikeScope;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
 {
+    use LikeScope;
+
     /**
      * The attributes that are mass assignable.
      *
