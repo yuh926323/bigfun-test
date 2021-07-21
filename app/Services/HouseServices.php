@@ -33,6 +33,9 @@ class HouseServices
                 $result = array_merge($result, [
                     'created_at' => $datetime,
                     'updated_at' => $datetime,
+                ], [
+                    'houseHolds' => (int) $result['houseHolds'],
+                    'persons' => (int) $result['persons'],
                 ]);
             });
             House::insert($results);
