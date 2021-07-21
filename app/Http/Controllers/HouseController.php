@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HouseSearch;
+use App\Http\Requests\HouseSearchAround;
 use App\Services\HouseServices;
 
 class HouseController extends Controller
@@ -26,6 +27,20 @@ class HouseController extends Controller
 
         $house_service = new HouseServices();
         $results = $house_service->search($sanitized);
+
+        return response()->json([
+            'status' => 0,
+            'message' => 'Search house info successfully.',
+            'results' => $results->toArray(),
+        ], 200);
+    }
+
+    public function searchAround(HouseSearchAround $request)
+    {
+        $sanitized = $request->validated();
+
+        $house_service = new HouseServices();
+        $results = $house_service->searchAround($sanitized);
 
         return response()->json([
             'status' => 0,
