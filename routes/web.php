@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/houses/sync', [HouseController::class, 'sync']);
+Route::post('/houses/search', [HouseController::class, 'search']);

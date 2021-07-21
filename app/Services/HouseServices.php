@@ -48,4 +48,17 @@ class HouseServices
             ];
         }
     }
+
+    public function search($params)
+    {
+        $query = House::query();
+
+        if (isset($params['distict']) and $params['distict']) {
+            $query->Like('distict', $params['distict']);
+        }
+
+        return $query->get()->map(function ($house) {
+            return $house->makeHidden(['created_at', 'updated_at']);
+        });
+    }
 }

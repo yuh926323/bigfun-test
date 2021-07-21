@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HouseSearch;
 use App\Services\HouseServices;
 
 class HouseController extends Controller
@@ -17,5 +18,19 @@ class HouseController extends Controller
         $result = $house_service->syncHouseInfo();
 
         return response()->json($result, 200);
+    }
+
+    public function search(HouseSearch $request)
+    {
+        $sanitized = $request->validated();
+
+        $house_service = new HouseServices();
+        $results = $house_service->search($sanitized);
+
+        return response()->json([
+            'status' => 0,
+            'message' => 'Search house info successfully.',
+            'results' => $results->toArray(),
+        ], 200);
     }
 }
