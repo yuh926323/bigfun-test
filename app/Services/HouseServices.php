@@ -60,6 +60,11 @@ class HouseServices
             $query->Like('distict', $params['distict']);
         }
 
+        if (isset($params['min_house_holds']) and isset($params['max_house_holds'])) {
+            $query->where('houseHolds', '>', $params['min_house_holds'])
+                ->where('houseHolds', '<', $params['max_house_holds']);
+        }
+
         return $query->get()->map(function ($house) {
             return $house->makeHidden(['created_at', 'updated_at']);
         });
