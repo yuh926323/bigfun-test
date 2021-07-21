@@ -18,10 +18,10 @@ class CreateHousesTable extends Migration
             $table->string('name')->default('');
             $table->string('distict')->default('');
             $table->string('address')->default('');
-            $table->string('lat')->default('');
-            $table->string('lng')->default('');
-            $table->string('houseHolds')->default('');
-            $table->string('persons')->default('');
+            $table->double('lat')->default(0);
+            $table->double('lng')->default(0);
+            $table->unsignedInteger('houseHolds')->default(0);
+            $table->unsignedInteger('persons')->default(0);
             $table->string('floors')->default('');
             $table->string('progress')->default('');
             $table->timestamps();
