@@ -91,7 +91,7 @@ class HouseServices
      * @param double $lng (經度)
      * @param integer $radiue 半徑(公尺)
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     private function getMinAndMaxLatLng($lat, $lng, $raidus)
     {
